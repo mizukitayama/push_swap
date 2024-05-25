@@ -6,7 +6,7 @@
 /*   By: mtayama <mtayama@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 19:42:35 by mtayama           #+#    #+#             */
-/*   Updated: 2024/05/26 07:27:15 by mtayama          ###   ########.fr       */
+/*   Updated: 2024/05/26 07:50:00 by mtayama          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <unistd.h>
 # include <stdbool.h>
 # include <limits.h>
-#include <stdio.h>
+# include <stdio.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 4
@@ -32,14 +32,14 @@ typedef struct s_stack{
 
 typedef struct s_move {
 	unsigned int	section_count;
-	int		section_num;
-	int		top_num;
-	int		search_num;
-	int		search_num_more;
+	int				section_num;
+	int				top_num;
+	int				search_num;
+	int				search_num_more;
 	unsigned int	a_move_flg;
 	unsigned int	max_index;
 }	t_move;
-char	*get_next_line(int fd);
+char			*get_next_line(int fd);
 unsigned int	create_stack(t_stack **a, char **argv);
 void			free_list(t_stack **stack);
 void			assign_unique_indices(t_stack *head);
@@ -55,7 +55,16 @@ char			**ft_split(char const *s, char c);
 char			*ft_substr(char *s, unsigned int start, size_t len);
 int				get_next_min_index(t_stack **head, int min_index);
 int				get_distance_to_min(t_stack **stack, int min_index);
-void	long_sort(t_stack **stack_a, t_stack **stack_b, unsigned int max_index);
+void			long_sort(t_stack **stack_a, t_stack **stack_b, \
+unsigned int max_index);
+bool			ft_is_search_num(t_stack *stack_b, t_move *move, \
+size_t move_section_count);
+void			ft_move_b_judge(t_stack **stack_a, t_stack **stack_b, \
+t_move *move);
+void			ft_move_a_flg_check(t_stack **stack_a, t_stack **stack_b, \
+t_move *move);
+void			ft_move_a_judge(t_stack **stack_a, t_stack **stack_b, \
+t_move *move);
 
 // instructions
 void			pb(t_stack **stack_a, t_stack **stack_b, int print_flg);
@@ -71,11 +80,11 @@ void			sb(t_stack **stack_b, int print_flg);
 void			ss(t_stack **stack_a, t_stack **stack_b, int print_flg);
 
 unsigned int	count_list(t_stack *head);
-bool	ft_move_b_check(t_stack *stack_a, int min, int max);
-bool	ft_move_a_check(t_stack *stack_b, int search_num);
+bool			ft_move_b_check(t_stack *stack_a, int min, int max);
+bool			ft_move_a_check(t_stack *stack_b, int search_num);
 
-size_t	ft_strlen(char *str);
-char	*ft_strchr(char *s, int c);
-char	*combine_strs(char *save, char *buf);
+size_t			ft_strlen(char *str);
+char			*ft_strchr(char *s, int c);
+char			*combine_strs(char *save, char *buf);
 
 #endif

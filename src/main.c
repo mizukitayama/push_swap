@@ -6,7 +6,7 @@
 /*   By: mtayama <mtayama@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 19:41:51 by mtayama           #+#    #+#             */
-/*   Updated: 2024/05/26 04:58:02 by mtayama          ###   ########.fr       */
+/*   Updated: 2024/05/26 07:44:39 by mtayama          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,16 +45,7 @@ int	main(int argc, char **argv)
 		long_sort(&a, &b, stack_length);
 	else
 		mini_sort(&a, &b, stack_length);
-	// print_list(a);
-	// printf("\n````````````````````````\n");
-	// print_list(b);
 	free_list(&a);
 	free_list(&b);
 	return (0);
 }
-
-
-// __attribute__ ((destructor)) void destructor()
-// {
-// 	system("leaks -q push_swap");
-// }

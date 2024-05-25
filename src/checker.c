@@ -6,13 +6,13 @@
 /*   By: mtayama <mtayama@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 06:51:03 by mtayama           #+#    #+#             */
-/*   Updated: 2024/05/26 07:25:57 by mtayama          ###   ########.fr       */
+/*   Updated: 2024/05/26 07:43:26 by mtayama          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+static int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	size_t			i;
 	unsigned char	*s1_cp;
@@ -41,33 +41,32 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	return (0);
 }
 
-#include <string.h>
-static void	check_instruction(char *line, t_stack **a, t_stack ** b)
+static void	check_instruction(char *line, t_stack **a, t_stack **b)
 {
-	if (strncmp(line, "sa", 3) == 0)
-			sa(a, 0);
-		else if (ft_strncmp(line, "sb", 3) == 0)
-			sb(b, 0);
-		else if (ft_strncmp(line, "ss", 3) == 0)
-			ss(a, b, 0);
-		else if (ft_strncmp(line, "pa", 3) == 0)
-			pa(a, b, 0);
-		else if (ft_strncmp(line, "pb", 3) == 0)
-			pb(a, b, 0);
-		else if (ft_strncmp(line, "ra", 3) == 0)
-			ra(a, 0);
-		else if (ft_strncmp(line, "rb", 3) == 0)
-			rb(b, 0);
-		else if (ft_strncmp(line, "rr", 3) == 0)
-			rr(a, b, 0);
-		else if (ft_strncmp(line, "rra", 4) == 0)
-			rra(a, 0);
-		else if (ft_strncmp(line, "rrb", 4) == 0)
-			rrb(b, 0);
-		else if (ft_strncmp(line, "rrr", 4) == 0)
-			rrr(a, b, 0);
-		else
-			write(1, "Error\n", 6);
+	if (ft_strncmp(line, "sa\n", 3) == 0)
+		sa(a, 0);
+	else if (ft_strncmp(line, "sb\n", 3) == 0)
+		sb(b, 0);
+	else if (ft_strncmp(line, "ss\n", 3) == 0)
+		ss(a, b, 0);
+	else if (ft_strncmp(line, "pa\n", 3) == 0)
+		pa(a, b, 0);
+	else if (ft_strncmp(line, "pb\n", 3) == 0)
+		pb(a, b, 0);
+	else if (ft_strncmp(line, "ra\n", 3) == 0)
+		ra(a, 0);
+	else if (ft_strncmp(line, "rb\n", 3) == 0)
+		rb(b, 0);
+	else if (ft_strncmp(line, "rr\n", 3) == 0)
+		rr(a, b, 0);
+	else if (ft_strncmp(line, "rra\n", 4) == 0)
+		rra(a, 0);
+	else if (ft_strncmp(line, "rrb\n", 4) == 0)
+		rrb(b, 0);
+	else if (ft_strncmp(line, "rrr\n", 4) == 0)
+		rrr(a, b, 0);
+	else
+		write(1, "Error\n", 6);
 }
 
 void	checker(t_stack **a, t_stack **b)
@@ -77,7 +76,6 @@ void	checker(t_stack **a, t_stack **b)
 	while (1)
 	{
 		line = get_next_line(0);
-		printf("line: %s\n", line);
 		if (!line)
 			break ;
 		check_instruction(line, a, b);
@@ -87,7 +85,6 @@ void	checker(t_stack **a, t_stack **b)
 		write(1, "OK\n", 3);
 	else
 		write(1, "KO\n", 3);
-
 }
 
 int	main(int argc, char **argv)
@@ -107,3 +104,8 @@ int	main(int argc, char **argv)
 	free_list(&b);
 	return (0);
 }
+
+// __attribute__ ((destructor)) void destructor()
+// {
+// 	system("leaks -q checker");
+// }

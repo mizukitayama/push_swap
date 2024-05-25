@@ -3,7 +3,7 @@ CFLAGS  = -Wall -Wextra -Werror
 RM      = rm -rf
 
 SRCS    = error.c init.c rotate_instractions.c push_instractions.c swap_instractions.c main.c radix_sort.c utils.c \
-			mini_sort.c ft_substr.c long_sort.c long_sort_utils.c get_next_line_utils.c get_next_line.c
+			mini_sort.c ft_substr.c long_sort.c long_sort_utils.c long_sort_utils2.c get_next_line_utils.c get_next_line.c
 NAME    = push_swap
 
 OBJ_DIR = obj/
@@ -37,12 +37,12 @@ $(NAME_BONUS): $(OBJ_DIR) $(OBJS_BONUS)
 	$(CC) $(CFLAGS) $(INCLUDE) -o $(NAME_BONUS) $(OBJS_BONUS)
 
 clean:
-	$(RM) $(OBJS) $(OBJ_DIR)
+	$(RM) $(OBJS) $(OBJS_BONUS) $(OBJ_DIR)
 
 fclean: clean
 	$(RM) $(NAME)
-	$(RM) $(GET_NEXT_LINE_DIR)$(GET_NEXT_LINE)
+	$(RM) $(NAME_BONUS)
 
-re: fclean all
+re: fclean all bonus
 
 .PHONY: all clean fclean re

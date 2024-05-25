@@ -6,7 +6,7 @@
 /*   By: mtayama <mtayama@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 19:42:19 by mtayama           #+#    #+#             */
-/*   Updated: 2024/05/26 07:03:56 by mtayama          ###   ########.fr       */
+/*   Updated: 2024/05/26 07:44:13 by mtayama          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,4 @@ void	rr(t_stack **stack_a, t_stack **stack_b, int print_flag)
 	rb(stack_b, 0);
 	if (print_flag == 1)
 		write(1, "rr\n", 3);
-}
-
-void	rrr(t_stack **stack_a, t_stack **stack_b, int print_flag)
-{
-	rra(stack_a, 0);
-	rrb(stack_b, 0);
-	if (print_flag == 1)
-		write(1, "rrr\n", 4);
 }

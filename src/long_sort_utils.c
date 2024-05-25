@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   long_sort_utils.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mtayama <mtayama@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/26 07:45:07 by mtayama           #+#    #+#             */
+/*   Updated: 2024/05/26 07:49:04 by mtayama          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 unsigned int	count_list(t_stack *head)
 {
-	t_stack	*tmp;
+	t_stack				*tmp;
 	unsigned int		count;
 
 	if (!head)
@@ -48,10 +60,7 @@ bool	ft_move_b_check(t_stack *stack_a, int min, int max)
 		if (tmp == stack_a)
 			break ;
 	}
-	if (rotate_count < reverse_rotate_count)
-		return (true);
-	else
-		return (false);
+	return (rotate_count < reverse_rotate_count);
 }
 
 /*
@@ -74,7 +83,6 @@ bool	ft_move_a_check(t_stack *stack_b, int search_num)
 			break ;
 		rotate_count++;
 	}
-	// printf("rotate_count: %zu\n", rotate_count);
 	tmp = stack_b;
 	reverse_rotate_count = 0;
 	while (tmp->index != search_num)
@@ -84,9 +92,5 @@ bool	ft_move_a_check(t_stack *stack_b, int search_num)
 			break ;
 		reverse_rotate_count++;
 	}
-	// printf("reverse_rotate_count: %zu\n", reverse_rotate_count);
-	if (rotate_count < reverse_rotate_count)
-		return (true);
-	else
-		return (false);
+	return (rotate_count < reverse_rotate_count);
 }

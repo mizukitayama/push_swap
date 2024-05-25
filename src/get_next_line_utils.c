@@ -6,7 +6,7 @@
 /*   By: mtayama <mtayama@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 18:57:32 by mtayama           #+#    #+#             */
-/*   Updated: 2024/05/26 06:48:41 by mtayama          ###   ########.fr       */
+/*   Updated: 2024/05/26 07:16:39 by mtayama          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ char	*ft_strchr(char *s, int c)
 	return (NULL);
 }
 
-char	*execute_combine_strs(char *save, char *buf, char *str)
+static char	*execute_combine_strs(char *save, char *buf, char *str)
 {
 	size_t	i;
 	size_t	j;

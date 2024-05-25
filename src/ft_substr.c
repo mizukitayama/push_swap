@@ -6,26 +6,13 @@
 /*   By: mtayama <mtayama@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 19:42:01 by mtayama           #+#    #+#             */
-/*   Updated: 2023/12/08 19:42:02 by mtayama          ###   ########.fr       */
+/*   Updated: 2024/05/26 07:27:09 by mtayama          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static size_t	ft_strlen(const char *s)
-{
-	size_t	len;
-
-	len = 0;
-	while (*s)
-	{
-		len++;
-		s++;
-	}
-	return (len);
-}
-
-static char	*copy_slice(char const *s, unsigned int start, size_t len)
+static char	*copy_slice(char *s, unsigned int start, size_t len)
 {
 	char	*t;
 	size_t	i;
@@ -49,7 +36,7 @@ static char	*copy_slice(char const *s, unsigned int start, size_t len)
 	return (t);
 }
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char *s, unsigned int start, size_t len)
 {
 	char	*t;
 

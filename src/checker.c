@@ -6,19 +6,45 @@
 /*   By: mtayama <mtayama@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 06:51:03 by mtayama           #+#    #+#             */
-/*   Updated: 2024/05/26 06:53:39 by mtayama          ###   ########.fr       */
+/*   Updated: 2024/05/26 07:25:57 by mtayama          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	checker(t_stack **a, t_stack **b)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	char	*line;
+	size_t			i;
+	unsigned char	*s1_cp;
+	unsigned char	*s2_cp;
 
-	while (line = get_next_line(0) > 0)
+	i = 0;
+	s1_cp = (unsigned char *)s1;
+	s2_cp = (unsigned char *)s2;
+	if (n == 0)
+		return (0);
+	while ((s1_cp[i] || s2_cp[i]) && i < n)
 	{
-		if (ft_strncmp(line, "sa", 3) == 0)
+		if (s1_cp[i] > s2_cp[i])
+		{
+			return ((int)s1_cp[i] - s2_cp[i]);
+		}
+		else if (s1_cp[i] < s2_cp[i])
+		{
+			return ((int)s1_cp[i] - s2_cp[i]);
+		}
+		else
+		{
+			i++;
+		}
+	}
+	return (0);
+}
+
+#include <string.h>
+static void	check_instruction(char *line, t_stack **a, t_stack ** b)
+{
+	if (strncmp(line, "sa", 3) == 0)
 			sa(a, 0);
 		else if (ft_strncmp(line, "sb", 3) == 0)
 			sb(b, 0);
@@ -41,13 +67,26 @@ void	checker(t_stack **a, t_stack **b)
 		else if (ft_strncmp(line, "rrr", 4) == 0)
 			rrr(a, b, 0);
 		else
-			ft_error();
+			write(1, "Error\n", 6);
+}
+
+void	checker(t_stack **a, t_stack **b)
+{
+	char	*line;
+
+	while (1)
+	{
+		line = get_next_line(0);
+		printf("line: %s\n", line);
+		if (!line)
+			break ;
+		check_instruction(line, a, b);
 		free(line);
 	}
 	if (is_sorted(*a) && !*b)
-		ft_putstr_fd("OK\n", 1);
+		write(1, "OK\n", 3);
 	else
-		ft_putstr_fd("KO\n", 1);
+		write(1, "KO\n", 3);
 
 }
 

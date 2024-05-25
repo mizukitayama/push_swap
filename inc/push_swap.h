@@ -6,7 +6,7 @@
 /*   By: mtayama <mtayama@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 19:42:35 by mtayama           #+#    #+#             */
-/*   Updated: 2024/05/26 06:59:53 by mtayama          ###   ########.fr       */
+/*   Updated: 2024/05/26 07:27:15 by mtayama          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void			check_errors(char *arg, t_stack **a);
 int				ft_isdigit(int c);
 int				ft_atoi(const char *nptr);
 char			**ft_split(char const *s, char c);
-char			*ft_substr(char const *s, unsigned int start, size_t len);
+char			*ft_substr(char *s, unsigned int start, size_t len);
 int				get_next_min_index(t_stack **head, int min_index);
 int				get_distance_to_min(t_stack **stack, int min_index);
 void	long_sort(t_stack **stack_a, t_stack **stack_b, unsigned int max_index);
@@ -74,7 +74,8 @@ unsigned int	count_list(t_stack *head);
 bool	ft_move_b_check(t_stack *stack_a, int min, int max);
 bool	ft_move_a_check(t_stack *stack_b, int search_num);
 
-// TODO: delete
-void	print_list(t_stack *head);
+size_t	ft_strlen(char *str);
+char	*ft_strchr(char *s, int c);
+char	*combine_strs(char *save, char *buf);
 
 #endif
